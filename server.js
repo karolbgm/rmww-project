@@ -3,7 +3,11 @@ const express = require("express");
 const app = express();
 const PORT = 3000;
 const mongoose = require("mongoose");
+const methodOverride = require("method-override");
 const db = mongoose.connection; //default connection object
+
+//MIDDLEWARE
+app.use(methodOverride("_method")); 
 
 //MODELS
 const Spot = require("./models/spots");
@@ -50,9 +54,14 @@ app.get("/spots/new", (req, res) => {
 })
 
 //DELETE
-// app.delete("/spots/:id", (req, res) => {
-//     res.send("It works!")
-// })
+app.delete("/spots/:id", (req, res) => {
+    Spot.findByIdAndDelete(req.params.id, (err) => {
+        if (err) {
+            console.log(err.message)
+        }
+        res.redirect("/spots")
+    })
+})
 
 //UPDATE
 // app.put("/spots/:id", (req, res) => {

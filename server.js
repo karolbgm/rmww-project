@@ -36,18 +36,18 @@ db.on("open", () => {
 
 //INDEX
 app.get("/spots", (req, res) => {
-    Spot.find({}, (err, data) => {
+    Spot.find({}, (err, allSpots) => {
         if (err) {
             console.log(err.message)
         }
-        res.render("index.ejs", {spots: data})
+        res.render("index.ejs", {spots: allSpots})
     })
 })
 
 //NEW
-// app.get("/spots/new", (req, res) => {
-//     res.send("It works!")
-// })
+app.get("/spots/new", (req, res) => {
+    res.render("new.ejs")
+})
 
 //DELETE
 // app.delete("/spots/:id", (req, res) => {

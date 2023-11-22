@@ -7,6 +7,8 @@ const methodOverride = require("method-override");
 const db = mongoose.connection; //default connection object
 
 //MIDDLEWARE
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(methodOverride("_method")); 
 
 //MODELS
@@ -64,24 +66,38 @@ app.delete("/spots/:id", (req, res) => {
 })
 
 //UPDATE
-// app.put("/spots/:id", (req, res) => {
-//     res.send("It works!")
-// })
+app.put("/spots/:id", (req, res) => {
+   Spot.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedSpot) => {
+    if (err) {
+        console.log(err.message)
+    }
+    res.redirect(`/spots/${updatedSpot.id}`)
+   })
+})
 
 //CREATE
-// app.post("/spots", (req, res) => {
-//     res.send("It works!")
-// })
+app.post("/spots", (req, res) => {
+    Spot.create(req.body, (err, newSpot) => {
+        if (err){
+            console.log(err.message)
+        }
+        res.redirect("/spots/")
+    })
+})
 
 //EDIT
-// app.get("/spots/:id/edit", (req, res) => {
-//     res.send("It works!")
-// })
+app.get("/spots/:id/edit", (req, res) => {
+    Spot.findById(req.params.id, (err, foundSpot) => {
+        res.render("edit.ejs", {spot: foundSpot})
+    })
+})
 
 //SHOW
-// app.get("/spots/:id", (req, res) => {
-//     res.send("It works!")
-// })
+app.get("/spots/:id", (req, res) => {
+    Spot.findById(req.params.id, (err, spot) => {
+        res.render("show.ejs", {spot: spot})
+    })
+})
 
 
 

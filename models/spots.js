@@ -25,6 +25,7 @@ const spotSchema = new mongoose.Schema({
   price: {
     type: Number,
     required: true,
+    min: 0
   },
 });
 

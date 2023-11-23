@@ -2,26 +2,41 @@
 <div class="row">
   <h1 class="text-center">Edit Campground</h1>
   <div class="col-6 offset-3">
-    <form action="/spots/<%=spot.id%>?_method=PUT" method="POST">
+    <form action="/spots/<%=spot.id%>?_method=PUT" method="POST" novalidate class="needs-validation">
       <div class="mb-3">
         <label class="form-label" for="name">Name</label>
-        <input class="form-control" type="text" name="name" id="name" value="<%=spot.name%>"/>
+        <input class="form-control" type="text" name="name" id="name" value="<%=spot.name%>" required/>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
       </div>
       <div class="mb-3">
         <label class="form-label" for="img">Image URL</label>
-        <input class="form-control" type="text" name="img" id="img" value="<%=spot.img%>"/>
+        <input class="form-control" type="text" name="img" id="img" value="<%=spot.img%>" required/>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
       </div>
       <div class="mb-3">
         <label class="form-label" for="location">Location</label>
-        <input class="form-control" type="text" name="location" id="location" value="<%=spot.location%>"/>
+        <input class="form-control" type="text" name="location" id="location" value="<%=spot.location%>" required/>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
       </div>
       <div class="mb-3">
         <label class="form-label" for="activities">Activities</label>
-        <input class="form-control" type="text" name="activities" id="activities" value="<%=spot.activities%>"/>
+        <input class="form-control" type="text" name="activities" id="activities" value="<%=spot.activities%>" required/>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
       </div>
       <div class="mb-3">
         <label class="form-label" for="price">Price</label>
-        <input class="form-control" type="number" name="price" id="price" value="<%=spot.price%>"/>
+        <input class="form-control" type="number" name="price" id="price" value="<%=spot.price%>" required/>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
       </div>
       <div class="form-check mb-3">
         <input class="form-check-input" type="checkbox" id="flexCheckDefault" name="dogFriendly" <% if(spot.dogFriendly === true) {%>
@@ -31,7 +46,10 @@
       </div>
       <div class="mb-3">
         <label class="form-label" for="description">Description</label>
-        <textarea class="form-control" name="description" name="description" id="description" cols="30" rows="2"><%=spot.description%></textarea>
+        <textarea class="form-control" name="description" name="description" id="description" cols="30" rows="2" required><%=spot.description%></textarea>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
       </div>
       <div class="mb-3">
         <button class="btn btn-success">Update Spot</button>

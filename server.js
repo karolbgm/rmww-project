@@ -43,13 +43,13 @@ db.on("open", () => {
 //I.N.D.U.C.E.S ROUTES
 
 //INDEX
-app.get("/spots", (req, res) => {
-    Spot.find({}, (err, allSpots) => {
-        if (err) {
-            console.log(err.message)
-        }
-        res.render("index.ejs", {spots: allSpots})
-    })
+app.get("/spots", async (req, res, next) => {
+try{
+    const allSpots = await Spot.find({})
+    res.render("index.ejs", {spots: allSpots})
+} catch (e) {
+    next(e)
+}
 })
 
 //NEW
@@ -58,61 +58,73 @@ app.get("/spots/new", (req, res) => {
 })
 
 //DELETE
-app.delete("/spots/:id", (req, res) => {
-    Spot.findByIdAndDelete(req.params.id, (err) => {
-        if (err) {
-            console.log(err.message)
-        }
-        res.redirect("/spots")
-    })
+app.delete("/spots/:id", async (req, res, next) => {
+    try {
+    await Spot.findByIdAndDelete(req.params.id)
+    res.redirect("/spots")
+    } catch (e) {
+        next(e)
+    }
 })
 
 //UPDATE
-app.put("/spots/:id", (req, res) => {
-    if (req.body.dogFriendly === "on") {
-        req.body.dogFriendly = true;
-    } else {
-        req.body.dogFriendly = false;
+app.put("/spots/:id", async (req, res, next) => {
+    try {
+        if (req.body.dogFriendly === "on") {
+            req.body.dogFriendly = true;
+        } else {
+            req.body.dogFriendly = false;
+        }
+        // Split activities and trim whitespace
+        req.body.activities = req.body.activities.split(',').map(activity => activity.trim());
+       const updatedSpot = await Spot.findByIdAndUpdate(req.params.id, req.body, {new:true, runValidators:true})
+       res.redirect(`/spots/${updatedSpot.id}`)
+    } catch (e) {
+        next(e)
     }
-    // Split activities and trim whitespace
-    req.body.activities = req.body.activities.split(',').map(activity => activity.trim());
-   Spot.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedSpot) => {
-    if (err) {
-        console.log(err.message)
-    }
-    res.redirect(`/spots/${updatedSpot.id}`)
-   })
 })
 
 //CREATE
-app.post("/spots", (req, res) => {
-    if (req.body.dogFriendly === "on") {
-        req.body.dogFriendly = true;
-      } else {
-        req.body.dogFriendly = false;
-      }
-    // Split activities and trim whitespace
-    req.body.activities = req.body.activities.split(',').map(activity => activity.trim());
-    Spot.create(req.body, (err, newSpot) => {
-        if (err){
-            console.log(err.message)
-        }
-        res.redirect("/spots/")
-    })
+app.post("/spots", async (req, res, next) => {
+    try {
+        if (req.body.dogFriendly === "on") {
+            req.body.dogFriendly = true;
+          } else {
+            req.body.dogFriendly = false;
+          }
+        // Split activities and trim whitespace
+        req.body.activities = req.body.activities.split(',').map(activity => activity.trim());
+        const spot = await Spot.create(req.body)
+        await spot.save()
+        res.redirect('/spots')
+    } catch (e) {
+        next(e)
+    }
 })
 
 //EDIT
-app.get("/spots/:id/edit", (req, res) => {
-    Spot.findById(req.params.id, (err, foundSpot) => {
+app.get("/spots/:id/edit", async (req, res, next) => {
+    try {
+        const foundSpot = await Spot.findById(req.params.id)
         res.render("edit.ejs", {spot: foundSpot})
-    })
+    } catch (e) {
+        next(e)
+    }
 })
 
 //SHOW
-app.get("/spots/:id", (req, res) => {
-    Spot.findById(req.params.id, (err, spot) => {
+app.get("/spots/:id", async (req, res, next) => {
+    try {
+        const spot = await Spot.findById(req.params.id)
         res.render("show.ejs", {spot: spot})
-    })
+    } catch (e) {
+        next(e)
+    }
+})
+
+//ERROR HANDLER FOR ANY ERROR (BASIC)
+app.use((err, req, res, next) => {
+    res.send('Something went wrong!')
 })
 
 //SERVER UP AND RUNNING

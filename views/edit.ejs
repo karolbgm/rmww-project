@@ -1,23 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+<% layout('layouts/boilerplate.ejs') %>
+<div class="row">
+  <h1 class="text-center">Edit Campground</h1>
+  <div class="col-6 offset-3">
     <form action="/spots/<%=spot.id%>?_method=PUT" method="POST">
-        <label for="name">Name</label>
-        <input type="text" id="name" value="<%=spot.name%>">
-        <label for="img">Image URL</label>
-        <input type="text" id="img" value="<%=spot.img%>">
-        <label for="location">Location</label>
-        <input type="text" id="location" value="<%=spot.location%>">
-        <label for="description">Description</label>
-        <textarea name="description" id="description" cols="30" rows="10"><%=spot.description%></textarea>
-        <label for="price">Price</label>
-        <input type="number" id="price" value="<%=spot.price%>">
-        <input type="submit" value="Update spot">
+      <div class="mb-3">
+        <label class="form-label" for="name">Name</label>
+        <input class="form-control" type="text" name="name" id="name" value="<%=spot.name%>"/>
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="img">Image URL</label>
+        <input class="form-control" type="text" name="img" id="img" value="<%=spot.img%>"/>
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="location">Location</label>
+        <input class="form-control" type="text" name="location" id="location" value="<%=spot.location%>"/>
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="activities">Activities</label>
+        <input class="form-control" type="text" name="activities" id="activities" value="<%=spot.activities%>"/>
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="price">Price</label>
+        <input class="form-control" type="number" name="price" id="price" value="<%=spot.price%>"/>
+      </div>
+      <div class="form-check mb-3">
+        <input class="form-check-input" type="checkbox" id="flexCheckDefault" name="dogFriendly" <% if(spot.dogFriendly === true) {%>
+          checked
+      <%}%>/>
+        <label class="form-check-label" for="flexCheckDefault">Dog Friendly</label>
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="description">Description</label>
+        <textarea class="form-control" name="description" name="description" id="description" cols="30" rows="2"><%=spot.description%></textarea>
+      </div>
+      <div class="mb-3">
+        <button class="btn btn-success">Update Spot</button>
+      </div>
     </form>
-</body>
-</html>
+    <a href="/spots/<%=spot.id%>">Back To Spot</a>
+  </div>
+</div>

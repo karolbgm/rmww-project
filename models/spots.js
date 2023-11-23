@@ -18,14 +18,6 @@ const spotSchema = new mongoose.Schema({
     type: [String],
     required: true,
   },
-  accessibility: {
-    type: String,
-    enum: ["Easy", "Moderate", "Difficult"],
-  },
-  permitRequired: {
-    type: Boolean,
-    default: false,
-  },
   dogFriendly: {
     type: Boolean,
     default: false,
@@ -33,11 +25,6 @@ const spotSchema = new mongoose.Schema({
   price: {
     type: Number,
     required: true,
-  },
-  rating: {
-    type: Number,
-    min: 1,
-    max: 5,
   },
 });
 

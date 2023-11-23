@@ -3,10 +3,12 @@ const express = require("express");
 const app = express();
 const PORT = 3000;
 const mongoose = require("mongoose");
+const ejsMate = require('ejs-mate') //I can create a layout file and include my partials in one place (boilerplate)
 const methodOverride = require("method-override");
 const db = mongoose.connection; //default connection object
 
 //MIDDLEWARE
+app.engine('ejs', ejsMate)
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(methodOverride("_method")); 
@@ -67,6 +69,13 @@ app.delete("/spots/:id", (req, res) => {
 
 //UPDATE
 app.put("/spots/:id", (req, res) => {
+    if (req.body.dogFriendly === "on") {
+        req.body.dogFriendly = true;
+    } else {
+        req.body.dogFriendly = false;
+    }
+    // Split activities and trim whitespace
+    req.body.activities = req.body.activities.split(',').map(activity => activity.trim());
    Spot.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedSpot) => {
     if (err) {
         console.log(err.message)
@@ -77,6 +86,13 @@ app.put("/spots/:id", (req, res) => {
 
 //CREATE
 app.post("/spots", (req, res) => {
+    if (req.body.dogFriendly === "on") {
+        req.body.dogFriendly = true;
+      } else {
+        req.body.dogFriendly = false;
+      }
+    // Split activities and trim whitespace
+    req.body.activities = req.body.activities.split(',').map(activity => activity.trim());
     Spot.create(req.body, (err, newSpot) => {
         if (err){
             console.log(err.message)
@@ -98,10 +114,6 @@ app.get("/spots/:id", (req, res) => {
         res.render("show.ejs", {spot: spot})
     })
 })
-
-
-
-
 
 //SERVER UP AND RUNNING
 app.listen(PORT, () => {

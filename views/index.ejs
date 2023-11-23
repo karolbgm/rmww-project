@@ -1,21 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RockyMountainWaterways</title>
-</head>
-<body>
-    <div>
-        <%for (let i = 0; i < spots.length; i++){%>
-        <div>
-            <%=spots[i].name%>
-            <%=spots[i].image%>
-            <form action="/spots/<%=spots[i].id%>?_method=DELETE" method="POST">
-                <input type="submit" value="DELETE">
-            </form>
+<% layout('layouts/boilerplate.ejs') %>
+<div class="card-deck d-flex flex-row flex-wrap">
+  <% for (let i = 0; i < spots.length; i++) { %>
+  <div class="col-sm-4 mb-3">
+    <div class="card">
+      <a href="/spots/<%= spots[i].id %>" class="card stretched-link text-decoration-none">
+        <img class="card-img-top" src="<%= spots[i].img %>" style="width: 100%; height: 400px; object-fit: cover"/>
+        <div class="card-body">
+          <h5 class="card-title"><%= spots[i].name %></h5>
+          <p class="card-text"><%= spots[i].description %></p>
         </div>
-        <%}%>
+      </a>
     </div>
-</body>
-</html>
+  </div>
+  <% } %>
+</div>

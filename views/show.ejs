@@ -1,6 +1,6 @@
 <% layout('layouts/boilerplate.ejs') %>
 <div class="row">
-    <div class="col-6 offset-3">
+    <div class="col-6">
         <div class="card mb-3">
             <img src="<%= spot.img%>" class="card-img-top">
             <div class="card-body">
@@ -29,6 +29,37 @@
                 2 days ago
             </div>
         </div>
+    </div>
+    <div class="col-6">
+        <h3>Review Spot</h3>
+        <form action="/spots/<%=spot.id%>/reviews" method="POST" class="mb-3 needs-validation" novalidate>
+            <div class="mb-3">
+                <label class="form-label" for="rating">Rating</label>
+                <select class="form-select" name="rating" id="rating">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="review">Review</label>
+                <textarea class="form-control" name="text" id="review" cols="30" rows="3" required></textarea>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <button class="btn btn-success">Add Review</button>
+        </form>
+        <% for (let review of spot.reviews) { %>
+            <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title"><%=review.rating%></h5>
+                <p class="card-text"><%=review.text%></p>
+            </div>
+            </div>
+        <%}%>
     </div>
 </div>
 

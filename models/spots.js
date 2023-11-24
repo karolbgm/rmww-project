@@ -27,6 +27,12 @@ const spotSchema = new mongoose.Schema({
     required: true,
     min: 0
   },
+  reviews: [ //Array of Objects Ids (review) for each campground
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Review' //'Review' Model
+    }
+  ]
 });
 
 //MODEL

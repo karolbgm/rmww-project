@@ -16,6 +16,7 @@ app.use(methodOverride("_method"));
 //MODELS
 const Spot = require("./models/spots");
 const seedData = require("./models/seed.js");
+const Review = require('./models/reviews.js')
 
 //CONFIG
 const mongoURI = "mongodb://localhost:27017/spots";
@@ -115,12 +116,26 @@ app.get("/spots/:id/edit", async (req, res, next) => {
 //SHOW
 app.get("/spots/:id", async (req, res, next) => {
     try {
-        const spot = await Spot.findById(req.params.id)
+        const spot = await Spot.findById(req.params.id).populate('reviews')
         res.render("show.ejs", {spot: spot})
     } catch (e) {
         next(e)
     }
 })
+
+app.post('/spots/:id/reviews', async(req,res, next) => {
+    try {
+        const spot = await Spot.findById(req.params.id);
+        const review = new Review(req.body)
+        spot.reviews.push(review)
+        await review.save()
+        await spot.save()
+        res.redirect(`/spots/${spot.id}`)
+    } catch (e) {
+        next(e)
+    }
+})
+
 
 //ERROR HANDLER FOR ANY ERROR (BASIC)
 app.use((err, req, res, next) => {

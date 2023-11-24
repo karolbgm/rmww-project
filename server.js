@@ -136,6 +136,16 @@ app.post('/spots/:id/reviews', async(req,res, next) => {
     }
 })
 
+app.delete('/spots/:id/reviews/:rId', async (req,res, next) => {
+    try {
+        const {id, rId} = req.params
+        await Spot.findByIdAndUpdate(id, {$pull: {reviews: rId}}) //it's going to take the review Id and pull it out of reviews(array of Ids)
+        await Review.findByIdAndDelete(req.params.rId) //then we delete entire review
+        res.redirect(`/spots/${id}`)
+    } catch (e) {
+        next(e)
+    }
+})
 
 //ERROR HANDLER FOR ANY ERROR (BASIC)
 app.use((err, req, res, next) => {

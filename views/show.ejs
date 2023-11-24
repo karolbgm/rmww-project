@@ -57,6 +57,9 @@
             <div class="card-body">
                 <h5 class="card-title"><%=review.rating%></h5>
                 <p class="card-text"><%=review.text%></p>
+                <form action="/spots/<%=spot.id%>/reviews/<%=review.id%>?_method=DELETE" method="POST">
+                <button class="btn btn-sm btn-danger">Delete</button>
+            </form>
             </div>
             </div>
         <%}%>

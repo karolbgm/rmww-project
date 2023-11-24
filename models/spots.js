@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-
+const Review = require('./reviews')
 const spotSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -34,6 +34,18 @@ const spotSchema = new mongoose.Schema({
     }
   ]
 });
+
+
+//MONGOOSE MIDDLEWARE
+spotSchema.post('findOneAndDelete', async function (doc) {
+  if (doc){
+    await Review.deleteMany({ //deleting all reviews where their Id field is in the doc that was deleted
+      _id: {
+        $in: doc.reviews
+      }
+    })
+  }
+})
 
 //MODEL
 const Spot = mongoose.model("Spot", spotSchema);

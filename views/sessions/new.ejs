@@ -1,0 +1,15 @@
+<% layout('./layouts/boilerplate.ejs') %>
+    <h1>Sign In</h1>
+    <form action="/sessions" method="POST">
+      <fieldset>
+        <label for="username">Username:</label>
+        <input type="text" name="username">
+      </fieldset>
+      <fieldset>
+        <label for="password">Password:</label>
+        <input type="password" name="password">
+      </fieldset>
+      <input type="submit" value="Sign In">
+    </form>
+  </body>
+</html>

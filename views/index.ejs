@@ -1,10 +1,10 @@
 <% layout('layouts/boilerplate.ejs') %>
-<div class="card-deck d-flex flex-row flex-wrap">
+<div class="card-deck d-flex flex-row flex-wrap justify-content-center">
   <% for (let i = 0; i < spots.length; i++) { %>
-  <div class="col-sm-4 mb-3">
-    <div class="card">
+  <div class="col-md-3 ms-3 me-3 mb-3">
+    <div class="card h-100">
       <a href="/spots/<%= spots[i].id %>" class="card stretched-link text-decoration-none">
-        <img class="card-img-top" src="<%= spots[i].img %>" style="width: 100%; height: 400px; object-fit: cover"/>
+        <img class="card-img-top" src="<%= spots[i].img %>" style="width: 100%; height: 60%; object-fit: cover"/>
         <div class="card-body">
           <h5 class="card-title"><%= spots[i].name %></h5>
           <p class="card-text"><%= spots[i].description %></p>
@@ -14,3 +14,4 @@
   </div>
   <% } %>
 </div>
+

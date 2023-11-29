@@ -1,12 +1,13 @@
 //REQUIRED DEPENDENCIES
 require('dotenv').config()
 const express = require("express");
-const app = express();
+
 const mongoose = require("mongoose");
 const ejsMate = require('ejs-mate') //I can create a layout file and include my partials in one place (boilerplate)
 const methodOverride = require("method-override");
 const session = require('express-session')
 const flash = require('connect-flash')
+const app = express();
 const db = mongoose.connection; //default connection object
 
 // env variables
@@ -55,12 +56,12 @@ db.on("connected", () => console.log("mongo connected: ", mongoURI));
 db.on("disconnected", () => console.log("mongo disconnected"));
 db.on("open", () => {
   console.log("Mongoose connection is open");
-//   Spot.create(seedData, (err, data) => {
-//     if (err) {
-//         console.log(err.message)
-//     }
-//     console.log('added seed data')
-//   })
+  // Spot.create(seedData, (err, data) => {
+  //   if (err) {
+  //       console.log(err.message)
+  //   }
+  //   console.log('added seed data')
+  // })
 });
 
 //CONTROLLER MIDDLEWARE

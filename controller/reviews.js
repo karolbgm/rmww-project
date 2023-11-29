@@ -7,14 +7,26 @@ const isAuthenticated = (req, res, next) => {
     if(req.session.currentUser) {
         return next()
     } else {
+      req.flash('error', 'Please Log in to access this page.')
         res.redirect('/sessions/new')
     }
+} 
+const isAuthorOfReview = async (req, res, next) => {
+  const rId = req.params.rId
+  const id = req.params.id
+  const review = await Review.findById(rId)
+  if (!review.author.equals(req.session.currentUser._id)){
+    req.flash('error', 'Access denied. Please ensure you are signed in with the correct account.')
+    return res.redirect(`/spots/${id}`)
+  }
+  next()
 } 
 
 router.post("/", isAuthenticated, async (req, res, next) => {
   try {
     const spot = await Spot.findById(req.params.id);
     const review = new Review(req.body);
+    review.author = req.session.currentUser._id
     spot.reviews.push(review);
     await review.save();
     await spot.save();
@@ -24,7 +36,7 @@ router.post("/", isAuthenticated, async (req, res, next) => {
   }
 });
 
-router.delete("/:rId", isAuthenticated, async (req, res, next) => {
+router.delete("/:rId", isAuthenticated, isAuthorOfReview, async (req, res, next) => {
   try {
     const { id, rId } = req.params;
     await Spot.findByIdAndUpdate(id, { $pull: { reviews: rId } }); //it's going to take the review Id and pull it out of reviews(array of Ids)

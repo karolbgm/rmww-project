@@ -9,26 +9,29 @@ sessions.get('/new', (req, res) => {
     })
 })
 
-sessions.post('/', (req, res) => {
-    User.findOne({ username: req.body.username }, (err, foundUser) => {
-        if(err) {
-            console.log(err)
-            res.send('oops, you hit an error')
-        } else if (!foundUser) {
-            res.send('<a href="/">Sorry, no user found</a>')
+sessions.post('/', async (req, res) => {
+    try {
+        const foundUser = await User.findOne({ username: req.body.username });
+
+        if (foundUser && bcrypt.compareSync(req.body.password, foundUser.password)) {
+            req.session.currentUser = foundUser;
+            req.flash('success', "Login successful!");
+            console.log(foundUser)
+            res.redirect('/spots');
         } else {
-            if (bcrypt.compareSync(req.body.password, foundUser.password)) {
-               req.session.currentUser = foundUser
-               res.redirect('/spots')
-            } else {
-                res.send('<a href="/">Password does not match </a>')
-            }
+            req.flash('error', 'Incorrect username or password.');
+            res.redirect('/sessions/new');
         }
-    })
-})
+    } catch (e) {
+        console.error(e);
+        req.flash('error', 'An error occurred during login.');
+        res.redirect('/sessions/new');
+    }
+});
 
 sessions.delete('/', (req, res) => {
     req.session.destroy(() => {
+        console.log('Session destroyed successfully');
         res.redirect('/spots')
     })
 })

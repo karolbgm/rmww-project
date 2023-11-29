@@ -17,20 +17,24 @@
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item text-muted"><%= spot.location%></li>
+                <li class="list-group-item">Created by <%= spot.author.username%></li>
                 <li class="list-group-item">$<%= spot.price%></li>
             </ul>
-            <div class="card-body">
+            <% if (currentUser && spot.author.equals(currentUser._id)) { %>
+                <div class="card-body">
                 <a class="card-link btn btn-info" href="/spots/<%=spot.id%>/edit">Edit</a>
                 <form class="d-inline" action="/spots/<%=spot.id%>?_method=DELETE" method="POST">
                     <button class="btn btn-danger">Delete</button>
                 </form>
             </div>
+            <%}%>
             <div class="card-footer text-muted">
                 2 days ago
             </div>
         </div>
     </div>
     <div class="col-6">
+        <% if (currentUser) {%>
         <h3>Review Spot</h3>
         <form action="/spots/<%=spot.id%>/reviews" method="POST" class="mb-3 needs-validation" novalidate>
             <div class="mb-3">
@@ -52,14 +56,18 @@
             </div>
             <button class="btn btn-success">Add Review</button>
         </form>
+        <%}%>
         <% for (let review of spot.reviews) { %>
             <div class="card mb-3">
             <div class="card-body">
-                <h5 class="card-title"><%=review.rating%></h5>
+                <h5 class="card-title"><%=review.author.username%></h5>
+                <h6 class="card-subtitle"><%=review.rating%></h6>
                 <p class="card-text"><%=review.text%></p>
+                <% if (currentUser && review.author.equals(currentUser._id)) { %>
                 <form action="/spots/<%=spot.id%>/reviews/<%=review.id%>?_method=DELETE" method="POST">
                 <button class="btn btn-sm btn-danger">Delete</button>
             </form>
+            <%}%>
             </div>
             </div>
         <%}%>

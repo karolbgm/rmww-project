@@ -27,6 +27,11 @@ const spotSchema = new mongoose.Schema({
     required: true,
     min: 0
   },
+  author:
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User' //'User' Model
+    },
   reviews: [ //Array of Objects Ids (review) for each campground
     {
       type: mongoose.Schema.Types.ObjectId,
@@ -51,3 +56,5 @@ spotSchema.post('findOneAndDelete', async function (doc) {
 const Spot = mongoose.model("Spot", spotSchema);
 
 module.exports = Spot;
+
+

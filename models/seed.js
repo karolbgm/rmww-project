@@ -8,6 +8,7 @@ const seedData = [
     activities: ["Swimming"],
     dogFriendly: true,
     price: 25, // Cost for hot springs entry
+    author: "65662557788509dec02552d1",
   },
   {
     name: "Glenwood Hot Springs",
@@ -18,6 +19,7 @@ const seedData = [
     activities: ["Swimming"],
     dogFriendly: false,
     price: 20, // Cost for hot springs entry
+    author: "65662557788509dec02552d1",
   },
   {
     name: "Great Sand Dunes – Medano Creek",
@@ -28,6 +30,7 @@ const seedData = [
     activities: ["Water Play"],
     dogFriendly: true,
     price: 0, // Assuming free access
+    author: "65662557788509dec02552d1",
   },
   {
     name: "Lake Dillon",
@@ -38,6 +41,7 @@ const seedData = [
     activities: ["Boating", "Swimming", "Paddleboarding"],
     dogFriendly: true,
     price: 0, // Assuming free access
+    author: "65662557788509dec02552d1",
   },
   {
     name: "Grand Lake",
@@ -48,6 +52,7 @@ const seedData = [
     activities: ["Boating", "Kayaking", "Paddleboarding"],
     dogFriendly: true,
     price: 0, // Assuming free access
+    author: "65662557788509dec02552d1",
   },
   {
     name: "Chatfield Reservoir",
@@ -58,6 +63,7 @@ const seedData = [
     activities: ["Boating", "Paddleboarding"],
     dogFriendly: true,
     price: 0, // Assuming free access
+    author: "65662557788509dec02552d1",
   },
   {
     name: "Eleven Mile Reservoir",
@@ -68,6 +74,7 @@ const seedData = [
     activities: ["Fishing", "Paddleboarding"],
     dogFriendly: true,
     price: 0, // Assuming free access
+    author: "65662557788509dec02552d1",
   },
   {
     name: "Paradise Cove",
@@ -78,6 +85,7 @@ const seedData = [
     activities: ["Swimming"],
     dogFriendly: true,
     price: 0, // Assuming free access
+    author: "65662557788509dec02552d1",
   },
   {
     name: "Arkansas River",
@@ -88,9 +96,10 @@ const seedData = [
     activities: ["Rafting", "Kayaking", "Fishing"],
     dogFriendly: true,
     price: 0, // Assuming free access
+    author: "65662557788509dec02552d1",
   },
   {
-    name: "Clear Creek",
+    name: "Cl Creek",
     img: "https://i.ibb.co/q1D02Bw/Clear-Creek.jpg",
     description:
       "Clear Creek offers opportunities for rafting and hiking with scenic canyon views.",
@@ -98,7 +107,9 @@ const seedData = [
     activities: ["Tubing", "Swimming"],
     dogFriendly: true,
     price: 0, // Assuming free access
+    author: "65662557788509dec02552d1",
   },
 ];
 
 module.exports = seedData;
+

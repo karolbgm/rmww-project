@@ -1,0 +1,28 @@
+.card .img-fit{
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+.card-body {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+}
+.card-text{
+    flex-grow: 1;
+}
+
+/* smaller than medium */
+@media (max-width: 767.98px){ 
+.card .img-fit {
+    aspect-ratio: 1.45 / 1;
+}
+}
+
+section {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("https://images.unsplash.com/photo-1517175910344-a64ec1a820c5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+    background-size: cover;
+    background-position: center 80%;
+    
+}

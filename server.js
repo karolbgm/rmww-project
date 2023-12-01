@@ -46,6 +46,7 @@ const userController = require('./controller/users.js')
 const sessionsController = require('./controller/sessions.js')
 
 
+
 //CONNECT TO MONGO
 mongoose.connect(mongoURI + 'spots');
 
@@ -69,6 +70,12 @@ app.use('/spots', spotsController) //path and router
 app.use('/spots/:id/reviews', reviewsController) 
 app.use('/users', userController)
 app.use('/sessions', sessionsController)
+
+
+app.get('/', (req, res) => {
+  const currentUser = req.session.currentUser
+  res.render('home.ejs', {currentUser})
+});
 
 //ERROR HANDLER FOR ANY ERROR (BASIC)
 // app.use((err, req, res, next) => {

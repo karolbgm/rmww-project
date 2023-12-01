@@ -1,84 +1,107 @@
 <% layout('layouts/boilerplate.ejs') %>
-<link rel="stylesheet" href="/css/starRating.css">
+<link rel="stylesheet" href="/css/starRating.css" />
 <div class="row">
-    <div class="col-6">
-        <div class="card mb-3">
-            <img src="<%= spot.img%>" class="card-img-top">
-            <div class="card-body">
-                <h5 class="card-title"><%= spot.name%></h5>
-                <div class="d-flex flex-wrap">
-                    <% if(spot.dogFriendly === true){ %>
-                        <p class="me-3"><i class="bi bi-check-circle"></i> Dog Friendly</p>
-                    <% } %>
-                    <% for (let activity of spot.activities) { %>
-                         <p class="me-3"><i class="bi bi-check-circle"></i> <%=activity%></p>
-                    <%}%>
-                </div>
-                <p class="card-text"><%= spot.description%></p>
-            </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item text-muted"><%= spot.location%></li>
-                <li class="list-group-item">Created by <%= spot.author.username%></li>
-                <li class="list-group-item">$<%= spot.price%></li>
-            </ul>
-            <% if (currentUser && spot.author.equals(currentUser._id)) { %>
-                <div class="card-body">
-                <a class="card-link btn btn-info" href="/spots/<%=spot.id%>/edit">Edit</a>
-                <form class="d-inline" action="/spots/<%=spot.id%>?_method=DELETE" method="POST">
-                    <button class="btn btn-danger">Delete</button>
-                </form>
-            </div>
-            <%}%>
-            <div class="card-footer text-muted">
-                2 days ago
-            </div>
+  <div class="col-6">
+    <div class="card mb-3">
+      <img src="<%= spot.img%>" class="card-img-top" style="max-height: 40vh" />
+      <div class="card-body">
+        <h5 class="card-title"><%= spot.name%></h5>
+        <p class="list-group-item text-muted"><%= spot.location%></p>
+        <div class="d-flex flex-wrap">
+          <% if(spot.dogFriendly === true){ %>
+          <p class="me-3"><i class="bi bi-check-circle"></i> Dog Friendly</p>
+          <% } %> <% for (let activity of spot.activities) { %>
+          <p class="me-3"><i class="bi bi-check-circle"></i> <%=activity%></p>
+          <%}%>
         </div>
+        <p class="card-text"><%= spot.description%></p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Created by <%= spot.author.username%></li>
+        <li class="list-group-item">$<%= spot.price%></li>
+      </ul>
+      <% if (currentUser && spot.author.equals(currentUser._id)) { %>
+      <div class="card-body">
+        <a class="card-link btn btn-info" href="/spots/<%=spot.id%>/edit"
+          >Edit</a
+        >
+        <form
+          class="d-inline"
+          action="/spots/<%=spot.id%>?_method=DELETE"
+          method="POST"
+        >
+          <button class="btn btn-danger">Delete</button>
+        </form>
+      </div>
+      <%}%>
+      <div class="card-footer text-muted">2 days ago</div>
     </div>
-    <div class="col-6">
-        <% if (currentUser) {%>
-        <h3>Review Spot</h3>
-        <form action="/spots/<%=spot.id%>/reviews" method="POST" class="mb-3 needs-validation" novalidate>
-            <div class="mb-3">
-                <fieldset class="starability-grow">
-                    <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked aria-label="No rating." />
-                    <input type="radio" id="first-rate1" name="rating" value="1" />
-                    <label for="first-rate1" title="Terrible">1 star</label>
-                    <input type="radio" id="first-rate2" name="rating" value="2" />
-                    <label for="first-rate2" title="Not good">2 stars</label>
-                    <input type="radio" id="first-rate3" name="rating" value="3" />
-                    <label for="first-rate3" title="Average">3 stars</label>
-                    <input type="radio" id="first-rate4" name="rating" value="4" />
-                    <label for="first-rate4" title="Very good">4 stars</label>
-                    <input type="radio" id="first-rate5" name="rating" value="5" />
-                    <label for="first-rate5" title="Amazing">5 stars</label>
-                  </fieldset>
-            </div>
-            <div class="mb-3">
-                <label class="form-label" for="review">Review</label>
-                <textarea class="form-control" name="text" id="review" cols="30" rows="3" required></textarea>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
-            </div>
-            <button class="btn btn-success">Add Review</button>
+  </div>
+  <div class="col-6">
+    <% if (currentUser) {%>
+    <h3>Review Spot</h3>
+    <form
+      action="/spots/<%=spot.id%>/reviews"
+      method="POST"
+      class="mb-3 needs-validation"
+      novalidate
+    >
+      <div class="mb-3">
+        <fieldset class="starability-grow">
+          <input
+            type="radio"
+            id="no-rate"
+            class="input-no-rate"
+            name="rating"
+            value="0"
+            checked
+            aria-label="No rating."
+          />
+          <input type="radio" id="first-rate1" name="rating" value="1" />
+          <label for="first-rate1" title="Terrible">1 star</label>
+          <input type="radio" id="first-rate2" name="rating" value="2" />
+          <label for="first-rate2" title="Not good">2 stars</label>
+          <input type="radio" id="first-rate3" name="rating" value="3" />
+          <label for="first-rate3" title="Average">3 stars</label>
+          <input type="radio" id="first-rate4" name="rating" value="4" />
+          <label for="first-rate4" title="Very good">4 stars</label>
+          <input type="radio" id="first-rate5" name="rating" value="5" />
+          <label for="first-rate5" title="Amazing">5 stars</label>
+        </fieldset>
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="review"></label>
+        <textarea
+          class="form-control"
+          name="text"
+          id="review"
+          cols="30"
+          rows="3"
+          placeholder="Leave your review here."
+          required
+        ></textarea>
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+      <button class="btn btn-success">Add Review</button>
+    </form>
+    <%}%> <% for (let review of spot.reviews) { %>
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title"><%=review.author.username%></h5>
+        <p class="starability-result" data-rating="<%=review.rating%>">
+          Rated: <%=review.rating%> stars
+        </p>
+        <p class="card-text"><%=review.text%></p>
+        <% if (currentUser && review.author.equals(currentUser._id)) { %>
+        <form
+          action="/spots/<%=spot.id%>/reviews/<%=review.id%>?_method=DELETE"
+          method="POST"
+        >
+          <button class="btn btn-sm btn-danger">Delete</button>
         </form>
         <%}%>
-        <% for (let review of spot.reviews) { %>
-            <div class="card mb-3">
-            <div class="card-body">
-                <h5 class="card-title"><%=review.author.username%></h5>
-                <p class="starability-result" data-rating="<%=review.rating%>">
-                  Rated:  <%=review.rating%> stars
-                </p>
-                <p class="card-text"><%=review.text%></p>
-                <% if (currentUser && review.author.equals(currentUser._id)) { %>
-                <form action="/spots/<%=spot.id%>/reviews/<%=review.id%>?_method=DELETE" method="POST">
-                <button class="btn btn-sm btn-danger">Delete</button>
-            </form>
-            <%}%>
-            </div>
-            </div>
-        <%}%>
+      </div>
     </div>
+    <%}%>
+  </div>
 </div>
-

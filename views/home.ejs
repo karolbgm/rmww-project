@@ -26,9 +26,11 @@
                         <a class="nav-link" href="/sessions/new">Log In</a>
                         <a class="nav-link" href="/users/new">Sign Up</a>
                         <% } else { %>
-                        <form action="/sessions?_method=DELETE" method="POST">
-                            <input class=" ms-3 btn btn-md btn-secondary font-weight-bold border-white bg-white" type="submit" value="Log Out"/>
-                          </form>
+                            <form action="/sessions?_method=DELETE" method="POST">
+                                <button type="submit" class="btn btn-outline-light btn-sm ms-3">
+                                  <i class="bi bi-box-arrow-right"></i> Log Out
+                                </button>
+                              </form>
                         <% } %>
                     </nav>
                 </div>

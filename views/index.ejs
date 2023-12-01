@@ -10,27 +10,29 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="/css/index.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="/css/index.css" />
   </head>
   <body class="d-flex flex-column vh-100">
     <%- include('./partials/navbar.ejs') %>
-    <main class="container mt-0 p-0" style="max-width: 100vw;">
-      <%- include('./partials/flash')%>
-      <section class=" py-5 text-center container m-0" style="max-width: 100vw;">
+    <main class="container mt-0 p-0" style="max-width: 100vw">
+      <section class="py-5 text-center container m-0" style="max-width: 100vw">
         <div class="row py-lg-5">
           <div class="col-lg-6 col-md-8 mx-auto">
             <h1 class="fw-light text-white-50">RockyMountain Waterways</h1>
             <p class="lead text-white-50">
-              Your answer to the question "Are you doing anything cool this weekend?"
+              Your answer to the question "Are you doing anything cool this
+              weekend?"
             </p>
           </div>
         </div>
       </section>
-      
+      <%- include('./partials/flash')%>
       <div class="album py-5 bg-body-tertiary">
         <div class="container">
-          
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             <% for (let i = 0; i < spots.length; i++) { %>
             <div class="col">
@@ -39,9 +41,13 @@
                 <div class="card-body">
                   <h5 class="card-title"><%= spots[i].name %></h5>
                   <p class="card-text"><%= spots[i].description %></p>
-                    <div class="text-end">
-                      <a href="/spots/<%= spots[i].id %>" class="btn btn-outline-primary">View Spot</a>
-                    </div>
+                  <div class="text-end">
+                    <a
+                      href="/spots/<%= spots[i].id %>"
+                      class="btn btn-outline-primary"
+                      >View Spot</a
+                    >
+                  </div>
                 </div>
               </div>
             </div>
@@ -56,7 +62,7 @@
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
-   
+
     <script src="/js/validateForms.js"></script>
   </body>
 </html>

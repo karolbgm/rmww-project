@@ -1,7 +1,6 @@
 //REQUIRED DEPENDENCIES
 require("dotenv").config();
 const express = require("express");
-
 const mongoose = require("mongoose");
 const ejsMate = require("ejs-mate"); //I can create a layout file and include my partials in one place (boilerplate)
 const methodOverride = require("method-override");
@@ -29,9 +28,9 @@ app.use(
 );
 app.use(flash());
 
-//Every single request will have access to this
+//All my views will have access to this
 app.use((req, res, next) => {
-  res.locals.success = req.flash("success");
+  res.locals.success = req.flash("success"); //res.locals pass local variables to the views
   res.locals.error = req.flash("error");
   next();
 });
@@ -70,15 +69,24 @@ app.use("/spots/:id/reviews", reviewsController);
 app.use("/users", userController);
 app.use("/sessions", sessionsController);
 
+//HOME PAGE
 app.get("/", (req, res) => {
   const currentUser = req.session.currentUser;
   res.render("home.ejs", { currentUser });
 });
 
-//ERROR HANDLER FOR ANY ERROR (BASIC)
-// app.use((err, req, res, next) => {
-//     res.send('Something went wrong!')
-// })
+//SEARCH BAR
+app.get('/search', async (req, res) => {
+  const {search_query} = req.query //extracting the search query
+  const currentUser = req.session.currentUser; //retrieves currentUser from session
+  const spots = await Spot.find({name: {$regex: search_query, $options: "i"}}) //regex allows me to search for part of word and options makes it case insensitive
+  res.render("search.ejs", {spots, search_query, currentUser})
+})
+
+// ERROR HANDLER FOR ANY ERROR (BASIC)
+app.use((err, req, res, next) => {
+    res.send('Something went wrong!')
+})
 
 //SERVER UP AND RUNNING
 app.listen(PORT, () => {

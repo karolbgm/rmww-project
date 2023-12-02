@@ -27,9 +27,9 @@ const spotSchema = new mongoose.Schema({
     required: true,
     min: 0,
   },
-  author: {
+  author: { //relationship between author and spot
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User", //'User' Model
+    ref: "User", //'User' Model -> the author contain an ObjectId that corresponds to a document in User collection
   },
   reviews: [
     //Array of Objects Ids (review) for each campground
@@ -40,7 +40,7 @@ const spotSchema = new mongoose.Schema({
   ],
 });
 
-//MONGOOSE MIDDLEWARE
+//MONGOOSE MIDDLEWARE -> triggered after findOneAndDelete of a spot
 spotSchema.post("findOneAndDelete", async function (doc) {
   if (doc) {
     await Review.deleteMany({

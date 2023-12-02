@@ -19,13 +19,14 @@
         <a class="nav-link" href="/spots/new">New Spot</a>
       </div>
       <div class="navbar-nav ms-auto">
+        <form action="/search" class="d-flex me-2" role="search" method="GET">
+          <input class="form-control me-2" type="search" placeholder="Search a Spot" aria-label="Search" name="search_query" required>
+          <button class="btn btn-outline-light" type="submit"><i class="bi bi-search"></i></button>
+        </form>
         <% if(!currentUser) {%>
         <a class="nav-link" href="/users/new">Sign Up</a>
         <a class="nav-link" href="/sessions/new">Log In</a>
         <% } else {%>
-        <!-- <form action="/sessions?_method=DELETE" method="POST">
-          <input type="submit" value="Log Out" class="btn-small red" />
-        </form> -->
         <form action="/sessions?_method=DELETE" method="POST">
           <button type="submit" class="btn btn-outline-light btn-sm">
             <i class="bi bi-box-arrow-right"></i> Log Out

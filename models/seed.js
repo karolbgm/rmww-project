@@ -7,7 +7,7 @@ const seedData = [
     location: "Steamboat Springs, Colorado",
     activities: ["Swimming"],
     dogFriendly: true,
-    price: 25, // Cost for hot springs entry
+    price: 25, 
     author: "65662557788509dec02552d1",
   },
   {
@@ -18,7 +18,7 @@ const seedData = [
     location: "Glenwood Springs, Colorado",
     activities: ["Swimming"],
     dogFriendly: false,
-    price: 20, // Cost for hot springs entry
+    price: 20, 
     author: "65662557788509dec02552d1",
   },
   {
@@ -29,7 +29,7 @@ const seedData = [
     location: "Mosca, Colorado",
     activities: ["Water Play"],
     dogFriendly: true,
-    price: 0, // Assuming free access
+    price: 25, 
     author: "65662557788509dec02552d1",
   },
   {
@@ -99,7 +99,7 @@ const seedData = [
     author: "65662557788509dec02552d1",
   },
   {
-    name: "Cl Creek",
+    name: "Clear Creek",
     img: "https://i.ibb.co/q1D02Bw/Clear-Creek.jpg",
     description:
       "Clear Creek offers opportunities for rafting and hiking with scenic canyon views.",
@@ -109,6 +109,86 @@ const seedData = [
     price: 0, // Assuming free access
     author: "65662557788509dec02552d1",
   },
+  {
+    name: "Cherry Creek Reservoir",
+    img: "https://www.colorado.com/sites/default/files/listing_images/profile/5043/2014_cherry_creek_state_park_0166.jpg",
+    description: "A popular reservoir with swimming and boating opportunities.",
+    location: "Aurora, Colorado",
+    activities: ["Swimming", "Boating"],
+    dogFriendly: true,
+    price: 11, 
+    author: "65662557788509dec02552d1",
+  },
+  {
+    name: "Twins Lake",
+    img: "https://www.leadvilletwinlakes.com/wp-content/uploads/2020/11/Twin-Lakes-in-December.jpg",
+    description: "A scenic mountain lake offering a peaceful retreat and fishing.",
+    location: "Leadville, Colorado",
+    activities: ["Fishing", "Hiking", "Swimming", "Paddleboarding"],
+    dogFriendly: true,
+    price: 0, // Assuming free access
+    author: "65662557788509dec02552d1",
+  },
+  {
+    name: "Horse Tooth Reservoir",
+    img: "https://www.larimer.gov/sites/default/files/02_horsetooth_reservoir_01_by_jeanie_sumrall-ajero.jpg",
+    description: "A reservoir near Fort Collins for boating and water sports.",
+    location: "Fort Collins, Colorado",
+    activities: ["Boating", "Water Sports"],
+    dogFriendly: true,
+    price: 10,
+    author: "65662557788509dec02552d1",
+  },
+  {
+    name: "Boulder Reservoir",
+    img: "https://assets.simpleviewinc.com/simpleview/image/upload/c_limit,h_1200,q_75,w_1200/v1/clients/boulder/5_Sunny_Beach_c2d65be5-dc05-417e-91e3-20bbb61e05a3.jpg",
+    description: "A popular spot for swimming, paddleboarding, and other water activities.",
+    location: "Boulder, Colorado",
+    activities: ["Swimming", "Paddleboarding", "Boating"],
+    dogFriendly: true,
+    price: 12, 
+    author: "65662557788509dec02552d1",
+  },
+  {
+    name: "Evergreen Lake",
+    img: "https://www.evergreenrecreation.com/ImageRepository/Document?documentID=273",
+    description: "A scenic lake in Evergreen offering boating and fishing.",
+    location: "Evergreen, Colorado",
+    activities: ["Boating", "Fishing", "Paddleboarding"],
+    dogFriendly: true,
+    price: 0, // Assuming free access
+    author: "65662557788509dec02552d1",
+  },
+  {
+    name: "Boulder Creek",
+    img: "https://assets.simpleviewinc.com/simpleview/image/upload/crm/boulder/Tubing-Boulder-Creek-797d29e05056a36_797d2d47-5056-a36a-0768293f25c022a3.jpg",
+    description: "A beautiful creek in Boulder for tubing and water activities.",
+    location: "Boulder, Colorado",
+    activities: ["Tubing", "Swimming"],
+    dogFriendly: true,
+    price: 0, // Assuming free access
+    author: "65662557788509dec02552d1",
+  },
+  {
+    name: "Blue Mesa Reservoir",
+    img: "https://www.colorado.com/sites/default/files/legacy_drupal_7_images/bluemesa_NPS_LisaLynch.jpg",
+    description: "A picturesque reservoir in Gunnison for boating and fishing.",
+    location: "Gunnison, Colorado",
+    activities: ["Boating", "Fishing"],
+    dogFriendly: true,
+    price: 0, // Assuming free access
+    author: "65662557788509dec02552d1",
+  },
+  {
+    name: "Conundrum Hot Springs",
+    img: "https://wp-cpr.s3.amazonaws.com/uploads/2019/05/conundrum-hot-springs.jpg",
+    description: "Remote hot springs in the mountains for a natural soak.",
+    location: "Aspen, Colorado",
+    activities: ["Hot Springs"],
+    dogFriendly: true,
+    price: 0, // Assuming free access
+    author: "65662557788509dec02552d1",
+  }
 ];
 
 module.exports = seedData;

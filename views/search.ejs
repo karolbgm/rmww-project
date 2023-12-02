@@ -1,0 +1,29 @@
+<% layout('layouts/boilerplate.ejs') %>
+<% if (spots.length===0) { %>
+    <h3>No results found for "<%=search_query%>". Please try a different search.</h3>
+
+<% } else { %>
+    <h3 class="mb-3">Search Results for "<%=search_query%>"</h3>
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          <% for (let spot of spots) { %>
+          <div class="col">
+            <div class="card shadow-sm h-100">
+              <img class="card-img-top" src="<%= spot.img %>" style="aspect-ratio: 16 / 9; object-fit: cover;"/>
+              <div class="card-body" style="display: flex; height: 100%; flex-direction: column;">
+                <h5 class="card-title"><%= spot.name %></h5>
+                <p class="card-text" style="flex-grow: 1;"><%= spot.description %></p>
+                <div class="text-end">
+                  <a
+                    href="/spots/<%= spot.id %>"
+                    class="btn btn-outline-primary"
+                    >View Spot</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <% } %>
+        </div>
+<% } %>
+

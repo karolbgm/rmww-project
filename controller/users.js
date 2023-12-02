@@ -3,12 +3,14 @@ const express = require("express");
 const users = express.Router();
 const User = require("../models/users.js");
 
+//SIGN UP
 users.get("/new", (req, res) => {
   res.render("users/new.ejs", {
     currentUser: req.session.currentUser,
   });
 });
 
+//SIGNING UP - CREATE A USER
 users.post("/", async (req, res) => {
   try {
     req.body.password = bcrypt.hashSync(

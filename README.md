@@ -30,14 +30,19 @@ The Rocky Mountain Waterways app is a digital guide to explore the diverse water
 ## Whiteboard Images
 * Index Page
 <img src="assets/INDEX.png" alt="Original Sketch"/>
+
 * Show Page
 <img src="assets/SHOW.png" alt="Original Sketch"/>
+
 * Register Page
 <img src="assets/REGISTER.png" alt="Original Sketch"/>
+
 * Login Page
 <img src="assets/LOGIN.png" alt="Original Sketch"/>
+
 * New Page
 <img src="assets/NEW.png" alt="Original Sketch"/>
+
 * Edit Page
 <img src="assets/EDIT.png" alt="Original Sketch"/>
 

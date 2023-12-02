@@ -1,10 +1,10 @@
 # RockyMountain Waterways
 
-#### My first node express application. 
+#### My first full-stack application. 
 <img src="/assets/mainPage.png" alt="Home Page Screen"/>
 
 ## Description
-The Rocky Mountain Waterways app is your go-to digital guide to explore the diverse water bodies in the Rocky Mountain region. From the mighty rivers to serene mountain lakes, this app offers a comprehensive overview to help you plan your next aquatic adventure.
+The Rocky Mountain Waterways app is a digital guide to explore the diverse water bodies in Colorado. From the mighty rivers to serene mountain lakes, this app helps you choose your next aquatic adventure.
 
 ## Table of Contents
 * [Technologies Used](#technologiesused)
@@ -30,13 +30,13 @@ The Rocky Mountain Waterways app is your go-to digital guide to explore the dive
 
 ## Whiteboard Images
 * Original sketch
-<img src="https://imgur.com/pIB95oC" alt="Original Sketch"/>
-<img src="https://imgur.com/3iSfuag" alt="Original Sketch"/>
-<img src="https://imgur.com/62CUZX0" alt="Original Sketch"/>
-<img src="https://imgur.com/EOh5v32" alt="Original Sketch"/>
-<img src="https://imgur.com/HUur3r4" alt="Original Sketch"/>
-<img src="https://imgur.com/r3jndUI" alt="Original Sketch"/>
-<img src="https://imgur.com/a/hlnBnD2" alt="Original Sketch"/>
+<img src="assets/INDEX.png" alt="Original Sketch"/>
+<img src="assets/SHOW.png" alt="Original Sketch"/>
+<img src="assets/REGISTER.png" alt="Original Sketch"/>
+<img src="assets/LOGIN.png" alt="Original Sketch"/>
+<img src="assets/NEW.png" alt="Original Sketch"/>
+<img src="assets/EDIT.png" alt="Original Sketch"/>
+
 
 ## Planning
 * Trello

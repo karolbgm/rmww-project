@@ -19,7 +19,6 @@ The Rocky Mountain Waterways app is a digital guide to explore the diverse water
 * Express
 * EJS
 * JavaScript
-* HTML5
 * Bootstrap
 * CSS3
 
@@ -29,12 +28,17 @@ The Rocky Mountain Waterways app is a digital guide to explore the diverse water
 * Activities at a Glance: Get insights into the activities available at each spot. Whether it's kayaking, fishing, or simply enjoying a peaceful swim.
 
 ## Whiteboard Images
-* Original sketch
+* Index Page
 <img src="assets/INDEX.png" alt="Original Sketch"/>
+* Show Page
 <img src="assets/SHOW.png" alt="Original Sketch"/>
+* Register Page
 <img src="assets/REGISTER.png" alt="Original Sketch"/>
+* Login Page
 <img src="assets/LOGIN.png" alt="Original Sketch"/>
+* New Page
 <img src="assets/NEW.png" alt="Original Sketch"/>
+* Edit Page
 <img src="assets/EDIT.png" alt="Original Sketch"/>
 
 

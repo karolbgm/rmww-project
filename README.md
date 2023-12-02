@@ -25,7 +25,7 @@ The Rocky Mountain Waterways app is a digital guide to explore the diverse water
 
 ## Features
 * Discover Water Activity Spots: Explore a diverse range of water bodies across Colorado. From adventurous rivers to serene mountain lakes, find the perfect spots for your favorite water activities.
-* Browse and Share Places: Discover new gems and share your favorite water activity spots with the community. Use the app to create, edit, update, and delete entries, ensuring an up-to-date and collaborative guide for fellow water enthusiasts.
+* Browse and Share Places: Discover new spots and share your favorite water activity spots with the community. Use the app to create, edit, update, and delete entries, ensuring an up-to-date and collaborative guide for fellow water enthusiasts.
 * Activities at a Glance: Get insights into the activities available at each spot. Whether it's kayaking, fishing, or simply enjoying a peaceful swim.
 
 ## Whiteboard Images

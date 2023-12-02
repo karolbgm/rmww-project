@@ -1,7 +1,7 @@
 # RockyMountain Waterways
 
 #### My first node express application. 
-<img src="https://imgur.com/zhJYybU" alt="Home Page Screen"/>
+<img src="/assets/mainPage.png" alt="Home Page Screen"/>
 
 ## Description
 The Rocky Mountain Waterways app is your go-to digital guide to explore the diverse water bodies in the Rocky Mountain region. From the mighty rivers to serene mountain lakes, this app offers a comprehensive overview to help you plan your next aquatic adventure.
